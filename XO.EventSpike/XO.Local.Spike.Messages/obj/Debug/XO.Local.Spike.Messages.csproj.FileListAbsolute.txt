@@ -1,0 +1,5 @@
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.Messages\bin\Debug\XO.Local.Spike.Messages.dll
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.Messages\bin\Debug\XO.Local.Spike.Messages.pdb
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.Messages\obj\Debug\XO.Local.Spike.Messages.csprojResolveAssemblyReference.cache
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.Messages\obj\Debug\XO.Local.Spike.Messages.dll
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.Messages\obj\Debug\XO.Local.Spike.Messages.pdb

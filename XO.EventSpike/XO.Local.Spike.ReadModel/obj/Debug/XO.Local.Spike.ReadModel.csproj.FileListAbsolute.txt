@@ -1,0 +1,14 @@
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\bin\Debug\XO.Local.Spike.ReadModel.dll
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\bin\Debug\XO.Local.Spike.ReadModel.pdb
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\obj\Debug\XO.Local.Spike.ReadModel.csprojResolveAssemblyReference.cache
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\obj\Debug\XO.Local.Spike.ReadModel.dll
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\obj\Debug\XO.Local.Spike.ReadModel.pdb
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\bin\Debug\MongoDB.Bson.dll
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\bin\Debug\MongoDB.Driver.dll
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\bin\Debug\MongoDB.Bson.xml
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\bin\Debug\MongoDB.Driver.xml
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\bin\Debug\StructureMap.dll
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\bin\Debug\StructureMap.Net4.dll
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\bin\Debug\StructureMap.pdb
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\bin\Debug\StructureMap.xml
+C:\Dev\EventSpike\XO.EventSpike\XO.Local.Spike.ReadModel\bin\Debug\StructureMap.Net4.pdb
