@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using EventStore.ClientAPI;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -37,15 +38,15 @@ namespace XO.Local.Spike.Infrastructure
         {
             _eventStoreConnection = eventStoreConnection;
             _aggregateIdToStreamName = aggregateIdToStreamName;
-            _eventStoreConnection.Connect();
+            _eventStoreConnection.ConnectAsync();
         }
 
-        public TAggregate GetById<TAggregate>(Guid id) where TAggregate : class, IAggregate
+        public Task<TAggregate> GetById<TAggregate>(Guid id) where TAggregate : class, IAggregate
         {
             return GetById<TAggregate>(id, int.MaxValue);
         }
 
-        public TAggregate GetById<TAggregate>(Guid id, int version) where TAggregate : class, IAggregate
+        public async Task<TAggregate> GetById<TAggregate>(Guid id, int version) where TAggregate : class, IAggregate
         {
             if (version <= 0)
                 throw new InvalidOperationException("Cannot get version <= 0");
@@ -61,7 +62,7 @@ namespace XO.Local.Spike.Infrastructure
                                     ? ReadPageSize
                                     : version - sliceStart + 1;
 
-                currentSlice = _eventStoreConnection.ReadStreamEventsForward(streamName, sliceStart, sliceCount, false);
+                currentSlice = await _eventStoreConnection.ReadStreamEventsForwardAsync(streamName, sliceStart, sliceCount, false);
 
                 if (currentSlice.Status == SliceReadStatus.StreamNotFound)
                     throw new AggregateNotFoundException(id, typeof (TAggregate));
@@ -92,8 +93,8 @@ namespace XO.Local.Spike.Infrastructure
             return JsonConvert.DeserializeObject(Encoding.UTF8.GetString(data), Type.GetType((string)eventClrTypeName));
         }
 
-        public void Save(IAggregate aggregate, Guid commitId, Action<IDictionary<string, object>> updateHeaders)
-        {
+        public async void Save(IAggregate aggregate, Guid commitId, Action<IDictionary<string, object>> updateHeaders)
+        { 
             var commitHeaders = new Dictionary<string, object>
             {
                 {CommitIdHeader, commitId},
@@ -109,21 +110,21 @@ namespace XO.Local.Spike.Infrastructure
 
             if (eventsToSave.Count < WritePageSize)
             {
-                _eventStoreConnection.AppendToStream(streamName, expectedVersion, eventsToSave);
+                _eventStoreConnection.AppendToStreamAsync(streamName, expectedVersion, eventsToSave);
             }
             else
             {
-                var transaction = _eventStoreConnection.StartTransaction(streamName, expectedVersion);
+                var transaction = await _eventStoreConnection.StartTransactionAsync(streamName, expectedVersion);
 
                 var position = 0;
                 while (position < eventsToSave.Count)
                 {
                     var pageEvents = eventsToSave.Skip(position).Take(WritePageSize);
-                    transaction.Write(pageEvents);
+                    transaction.WriteAsync(pageEvents);
                     position += WritePageSize;
                 }
 
-                transaction.Commit();
+                transaction.CommitAsync();
             }
 
             aggregate.ClearUncommittedEvents();

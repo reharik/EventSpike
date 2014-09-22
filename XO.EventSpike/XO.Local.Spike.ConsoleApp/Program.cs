@@ -30,9 +30,9 @@ namespace XO.Local.Spike.ConsoleApp
                 mb.AcceptRequest(smr.UserName, smr.Email, smr.LastName, smr.FirstName, smr.Password);
                 userNames.Add(new Tuple<string, string>(smr.UserName, smr.Password));
             }
-            Thread.Sleep(10000);
+            Thread.Sleep(2000);
             userNames.ForEach(x=> lu.AcceptRequest(x.Item1,x.Item2));
-//            Console.Read();
+            Console.Read();
 
         }
     }

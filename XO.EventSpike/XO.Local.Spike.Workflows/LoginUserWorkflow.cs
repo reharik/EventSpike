@@ -19,10 +19,10 @@ namespace XO.Local.Spike.Workflows
             _getEventStoreRepository = getEventStoreRepository;
         }
 
-        public void LoginUser(LoginUser loginUser)
+        public async void LoginUser(LoginUser loginUser)
         {
             //            var byId = _getEventStoreRepository.GetById<User>(new Guid("f036aadb-d427-4478-ac8c-c168e2d55d9f"));
-            var user = _getEventStoreRepository.GetById<User>(loginUser.Id);
+            var user = await _getEventStoreRepository.GetById<User>(loginUser.Id);
             user.Handle(loginUser);
             _getEventStoreRepository.Save(user, Guid.NewGuid(), a => { });
         }

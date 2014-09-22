@@ -38,7 +38,7 @@ namespace XO.Local.Spike.UserHandler
             _eventHandlers = eventHandlers;
             _handlerType = this.GetType().Name;
             _gesConnection = EventStoreConnection.Create(new IPEndPoint(IPAddress.Loopback, 1113));
-            _gesConnection.Connect();
+            _gesConnection.ConnectAsync();
             RegisterHandlers();
         }
 
@@ -69,7 +69,6 @@ namespace XO.Local.Spike.UserHandler
             if (_stopRequested)
                 return;
             _eventHandlers.ForEach(x => x.GetLastPositionProcessed());
-            _subscription.Start();
         }
 
         private void HandleNewEvent(EventStoreCatchUpSubscription subscription, ResolvedEvent @event)

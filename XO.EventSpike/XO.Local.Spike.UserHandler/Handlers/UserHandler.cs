@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks.Dataflow;
+﻿using System.Threading;
+using System.Threading.Tasks.Dataflow;
 using EventStore.ClientAPI;
 using XO.Local.Spike.Messages.Events;
 using XO.Local.Spike.ReadModel;
@@ -59,6 +60,7 @@ namespace XO.Local.Spike.UserHandler.Handlers
 
         private IReadModel userRegistered(IGESEvent x)
         {
+            Thread.Sleep(1000);
             var userRegistered = (UserRegistered)x;
             var user = _mongoRepository.Get<User>(u => u.Id == userRegistered.Id);
             user.UserName = userRegistered.UserName;
