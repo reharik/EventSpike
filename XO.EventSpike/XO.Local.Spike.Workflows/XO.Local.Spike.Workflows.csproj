@@ -54,13 +54,13 @@
     <Compile Include="RegisterUserWorkflow.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XO.Local.Domain\XO.Local.Domain.csproj">
-      <Project>{27947362-DE46-4F37-8D79-F22A6DB2DFA5}</Project>
-      <Name>XO.Local.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XO.Local.Spike.Domain\XO.Local.Spike.Domain.csproj">
       <Project>{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}</Project>
       <Name>XO.Local.Spike.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XO.Local.Spike.Infrastructure\XO.Local.Spike.Infrastructure.csproj">
+      <Project>{27947362-DE46-4F37-8D79-F22A6DB2DFA5}</Project>
+      <Name>XO.Local.Spike.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\XO.Local.Spike.Messages\XO.Local.Spike.Messages.csproj">
       <Project>{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}</Project>

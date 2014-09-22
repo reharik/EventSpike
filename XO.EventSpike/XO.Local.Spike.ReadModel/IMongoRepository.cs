@@ -45,7 +45,7 @@ namespace XO.Local.Spike.ReadModel
 
         public virtual void Save<T>(T value) where T : IReadModel
         {
-            var collection = _mongoDatabase.GetCollection<T>(typeof(T).Name.ToLower());
+            var collection = _mongoDatabase.GetCollection<T>(value.GetType().Name.ToLower());
             var result = collection.Save(value);
 
             if (!result.Ok)

@@ -8,8 +8,8 @@ namespace XO.Local.Spike.UserHandler
         static void Main(string[] args)
         {
             Bootstrapper.Bootstrap();
-            var userHandler = ObjectFactory.Container.GetInstance<IUserHandler>();
-            userHandler.StartDispatching();    
+            var dispatcher = ObjectFactory.Container.GetInstance<IReadStoreDispatcher>();
+            dispatcher.StartDispatching();    
             Console.Read();
         }
     }

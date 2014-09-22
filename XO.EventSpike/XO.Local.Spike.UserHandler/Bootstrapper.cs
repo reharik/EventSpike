@@ -1,6 +1,7 @@
 ﻿using StructureMap;
 using StructureMap.Graph;
 using XO.Local.Domain;
+using XO.Local.Spike.Infrastructure;
 
 namespace XO.Local.Spike.UserHandler
 {
@@ -18,6 +19,7 @@ namespace XO.Local.Spike.UserHandler
                 x.Scan(z=>
                 {
                     z.TheCallingAssembly();
+                    z.AddAllTypesOf<IEventHandler>();
                     z.WithDefaultConventions();
                 });
                 x.AddRegistry(new InfrastructureRegistry());

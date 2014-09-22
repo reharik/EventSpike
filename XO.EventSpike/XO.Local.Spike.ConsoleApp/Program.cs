@@ -32,9 +32,11 @@ namespace XO.Local.Spike.ConsoleApp
             }
             Thread.Sleep(10000);
             userNames.ForEach(x=> lu.AcceptRequest(x.Item1,x.Item2));
+//            Console.Read();
+
         }
     }
-
+                
     public class SomeMessyRequest
     {
         public string UserName { get; set; }

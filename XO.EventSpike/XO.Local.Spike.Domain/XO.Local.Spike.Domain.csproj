@@ -43,9 +43,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XO.Local.Domain\XO.Local.Domain.csproj">
-      <Project>{27947362-de46-4f37-8d79-f22a6db2dfa5}</Project>
-      <Name>XO.Local.Domain</Name>
+    <ProjectReference Include="..\XO.Local.Spike.Infrastructure\XO.Local.Spike.Infrastructure.csproj">
+      <Project>{27947362-DE46-4F37-8D79-F22A6DB2DFA5}</Project>
+      <Name>XO.Local.Spike.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\XO.Local.Spike.Messages\XO.Local.Spike.Messages.csproj">
       <Project>{62c7845f-ef4d-4f0b-a6ed-4d28232ea1b2}</Project>

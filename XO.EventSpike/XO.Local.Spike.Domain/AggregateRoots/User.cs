@@ -1,5 +1,7 @@
 ﻿using System;
-using XO.Local.Domain;
+using XO.Local.Spike.Infrastructure;
+using XO.Local.Spike.Messages.Command;
+using XO.Local.Spike.Messages.Events;
 
 namespace XO.Local.Spike.Domain.AggregateRoots
 {

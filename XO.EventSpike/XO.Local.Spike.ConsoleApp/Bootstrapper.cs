@@ -1,6 +1,7 @@
 ﻿using StructureMap;
 using StructureMap.Graph;
 using XO.Local.Domain;
+using XO.Local.Spike.Infrastructure;
 
 namespace XO.Local.Spike.ConsoleApp
 {

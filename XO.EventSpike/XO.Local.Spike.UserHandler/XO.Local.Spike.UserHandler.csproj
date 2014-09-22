@@ -53,6 +53,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.23.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Tpl.Dataflow.4.5.23\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,9 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="GESEventDispatcherBase.cs" />
+    <Compile Include="Handlers\HandlerBase.cs" />
+    <Compile Include="ReadStoreDispatcher.cs" />
     <Compile Include="GESEventDispatcherOrigional.cs" />
-    <Compile Include="Handler.cs" />
+    <Compile Include="Handlers\IEventHandler.cs" />
+    <Compile Include="Handlers\UserHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,9 +78,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XO.Local.Domain\XO.Local.Domain.csproj">
+    <ProjectReference Include="..\XO.Local.Spike.Infrastructure\XO.Local.Spike.Infrastructure.csproj">
       <Project>{27947362-DE46-4F37-8D79-F22A6DB2DFA5}</Project>
-      <Name>XO.Local.Domain</Name>
+      <Name>XO.Local.Spike.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\XO.Local.Spike.MessageBinders\XO.Local.Spike.MessageBinders.csproj">
       <Project>{96828673-36C2-4256-A029-3426C21A9FFE}</Project>

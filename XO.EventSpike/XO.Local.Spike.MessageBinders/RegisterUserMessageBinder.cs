@@ -1,5 +1,5 @@
 ﻿using System;
-using XO.Local.Spike.Domain.AggregateRoots;
+using XO.Local.Spike.Messages.Command;
 using XO.Local.Spike.ReadModel;
 using XO.Local.Spike.ReadModel.Model;
 using XO.Local.Spike.Workflows;
