@@ -1,5 +1,6 @@
 ﻿using System;
 using XO.Local.Spike.Infrastructure;
+using XO.Local.Spike.Infrastructure.GES;
 using XO.Local.Spike.Messages.Command;
 using XO.Local.Spike.Messages.Events;
 

@@ -13,8 +13,7 @@ namespace XO.Local.Domain
                 x.TheCallingAssembly();
                 x.WithDefaultConventions();
             });
-            For<IMongoDB>().Use(x => new Spike.ReadModel.MongoDB("mongodb://localhost"));
-            For<IMongoRepository>().Use(x => new MongoRepository(x.GetInstance<IMongoDB>().GetDatabase()));
+          
         }
     }
 }

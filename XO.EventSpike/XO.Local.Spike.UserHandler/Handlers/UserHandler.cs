@@ -1,15 +1,18 @@
 ﻿using System.Threading;
 using System.Threading.Tasks.Dataflow;
 using EventStore.ClientAPI;
+using XO.Local.Spike.Infrastructure;
+using XO.Local.Spike.Infrastructure.Mongo;
+using XO.Local.Spike.Infrastructure.SharedModels;
 using XO.Local.Spike.Messages.Events;
 using XO.Local.Spike.ReadModel;
 using XO.Local.Spike.ReadModel.Model;
 
 namespace XO.Local.Spike.UserHandler.Handlers
 {
-    public class UserHandler : HandlerBase, IEventHandler
+    public class UserHandler : HandlerBase, IHandler
     {
-        public UserHandler(IMongoRepository mongoRepository)
+        public UserHandler(IMongoRepository mongoRepository) : base(mongoRepository)
         {
             _mongoRepository = mongoRepository;
             _handlerType = "UserHandler";

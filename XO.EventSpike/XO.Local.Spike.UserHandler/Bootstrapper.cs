@@ -19,7 +19,7 @@ namespace XO.Local.Spike.UserHandler
                 x.Scan(z=>
                 {
                     z.TheCallingAssembly();
-                    z.AddAllTypesOf<IEventHandler>();
+                    z.AddAllTypesOf<IHandler>();
                     z.WithDefaultConventions();
                 });
                 x.AddRegistry(new InfrastructureRegistry());

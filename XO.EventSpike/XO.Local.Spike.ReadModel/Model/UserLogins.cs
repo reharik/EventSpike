@@ -1,4 +1,5 @@
 ﻿using System;
+using XO.Local.Spike.Infrastructure.SharedModels;
 
 namespace XO.Local.Spike.ReadModel.Model
 {

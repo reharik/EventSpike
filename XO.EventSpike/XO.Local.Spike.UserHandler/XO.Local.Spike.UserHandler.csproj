@@ -65,10 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Handlers\HandlerBase.cs" />
     <Compile Include="ReadStoreDispatcher.cs" />
     <Compile Include="GESEventDispatcherOrigional.cs" />
-    <Compile Include="Handlers\IEventHandler.cs" />
     <Compile Include="Handlers\UserHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

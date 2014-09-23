@@ -1,20 +1,19 @@
 ﻿using System;
+using EventStore.ClientAPI;
+using XO.Local.Spike.Infrastructure.Mongo;
 using XO.Local.Spike.Messages.Command;
-using XO.Local.Spike.ReadModel;
 using XO.Local.Spike.ReadModel.Model;
-using XO.Local.Spike.Workflows;
 
 namespace XO.Local.Spike.MessageBinders
 {
-    public class RegisterUserMessageBinder
+    public class RegisterUserMessageBinder : MessageBinderBase
     {
         private readonly IMongoRepository _mongoRepository;
-        private readonly IRegisterUserWorkflow _registerUserWorkflow;
 
-        public RegisterUserMessageBinder(IMongoRepository mongoRepository, IRegisterUserWorkflow registerUserWorkflow)
+        public RegisterUserMessageBinder(IMongoRepository mongoRepository, IEventStoreConnection eventStoreConnection)
+            : base(eventStoreConnection)
         {
             _mongoRepository = mongoRepository;
-            _registerUserWorkflow = registerUserWorkflow;
         }
 
         public void AcceptRequest(string userName, string emailAddress, string lastName, string firstName,
@@ -28,7 +27,8 @@ namespace XO.Local.Spike.MessageBinders
 
             // validate email address.
             var registerUser = new RegisterUser(userName, emailAddress, lastName, firstName, password);
-            _registerUserWorkflow.RegisterUser(registerUser);
+            PostEvent(registerUser, Guid.NewGuid(), a => { });
+
         }
     }
 }

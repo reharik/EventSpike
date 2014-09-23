@@ -42,13 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\Events\IGESEvent.cs" />
     <Compile Include="Command\LoginUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Command\RegisterUser.cs" />
-    <Compile Include="Command\Events\UserCreated.cs" />
-    <Compile Include="Command\Events\UserLoggedIn.cs" />
-    <Compile Include="Command\Events\UserRegistered.cs" />
+    <Compile Include="Events\UserCreated.cs" />
+    <Compile Include="Events\UserLoggedIn.cs" />
+    <Compile Include="Events\UserRegistered.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XO.Local.Spike.Infrastructure\XO.Local.Spike.Infrastructure.csproj">
+      <Project>{27947362-DE46-4F37-8D79-F22A6DB2DFA5}</Project>
+      <Name>XO.Local.Spike.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

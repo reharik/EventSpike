@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EventStore.ClientAPI, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EventStore.Client.3.0.0\lib\net40\EventStore.ClientAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.dll</HintPath>
     </Reference>
@@ -51,6 +59,10 @@
     <Compile Include="RegisterUserMessageBinder.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\XO.Local.Spike.Infrastructure\XO.Local.Spike.Infrastructure.csproj">
+      <Project>{27947362-DE46-4F37-8D79-F22A6DB2DFA5}</Project>
+      <Name>XO.Local.Spike.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XO.Local.Spike.Messages\XO.Local.Spike.Messages.csproj">
       <Project>{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}</Project>
       <Name>XO.Local.Spike.Messages</Name>

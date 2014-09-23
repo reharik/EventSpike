@@ -1,30 +1,40 @@
 ﻿using System;
+using System.Threading.Tasks.Dataflow;
 using XO.Local.Spike.Domain.AggregateRoots;
 using XO.Local.Spike.Infrastructure;
+using XO.Local.Spike.Infrastructure.GES.Interfaces;
+using XO.Local.Spike.Infrastructure.Mongo;
+using XO.Local.Spike.Infrastructure.SharedModels;
 using XO.Local.Spike.Messages.Command;
 
 namespace XO.Local.Spike.Workflows
 {
-    public interface ILoginUserWorkflow
-    {
-        void LoginUser(LoginUser loginUser);
-    }
-
-    public class LoginUserWorkflow : ILoginUserWorkflow
+    public class LoginUserWorkflow : HandlerBase, IHandler
     {
         private readonly IGetEventStoreRepository _getEventStoreRepository;
 
-        public LoginUserWorkflow(IGetEventStoreRepository getEventStoreRepository)
+        public LoginUserWorkflow(IGetEventStoreRepository getEventStoreRepository, IMongoRepository mongoRepository)
+            : base(mongoRepository)
         {
             _getEventStoreRepository = getEventStoreRepository;
+            _handlerType = "LoginUserWorkflow";
         }
 
-        public async void LoginUser(LoginUser loginUser)
+        public bool HandlesEvent(IGESEvent @event)
         {
-            //            var byId = _getEventStoreRepository.GetById<User>(new Guid("f036aadb-d427-4478-ac8c-c168e2d55d9f"));
-            var user = await _getEventStoreRepository.GetById<User>(loginUser.Id);
-            user.Handle(loginUser);
-            _getEventStoreRepository.Save(user, Guid.NewGuid(), a => { });
+            return @event.EventType == "LoginUser";
+        }
+
+        public ActionBlock<IGESEvent> ReturnActionBlock()
+        {
+            return new ActionBlock<IGESEvent>(async x =>
+                {
+                    var loginUser = (LoginUser)x;
+                    User user = await _getEventStoreRepository.GetById<User>(loginUser.Id);
+                    user.Handle(loginUser);
+                    _getEventStoreRepository.Save(user, Guid.NewGuid(), a => { });
+                    SetEventAsRecorded(x);
+                });
         }
     }
 }

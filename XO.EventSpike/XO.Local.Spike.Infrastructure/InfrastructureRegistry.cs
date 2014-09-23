@@ -1,5 +1,6 @@
 ﻿using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
+using XO.Local.Spike.Infrastructure.Mongo;
 
 namespace XO.Local.Spike.Infrastructure
 {
@@ -12,8 +13,9 @@ namespace XO.Local.Spike.Infrastructure
                 x.TheCallingAssembly();
                 x.WithDefaultConventions();
             });
-            For<IGetEventStoreRepository>().Singleton()
-                .Use(x => new GetEventStoreRepository(x.GetInstance<IGESConnection>().BuildConnection()));
+            For<IMongoDB>().Use(x => new Mongo.MongoDB("mongodb://localhost"));
+            For<IMongoRepository>().Use(x => new MongoRepository(x.GetInstance<IMongoDB>().GetDatabase()));
+          
         }
     }
 }
