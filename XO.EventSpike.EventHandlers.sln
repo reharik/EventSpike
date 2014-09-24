@@ -1,17 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.Domain", "XO.EventSpike\XO.Local.Spike.Domain\XO.Local.Spike.Domain.csproj", "{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.MessageBinders", "XO.EventSpike\XO.Local.Spike.MessageBinders\XO.Local.Spike.MessageBinders.csproj", "{96828673-36C2-4256-A029-3426C21A9FFE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.Messages", "XO.EventSpike\XO.Local.Spike.Messages\XO.Local.Spike.Messages.csproj", "{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.ReadModel", "XO.EventSpike\XO.Local.Spike.ReadModel\XO.Local.Spike.ReadModel.csproj", "{FE897AEE-44B0-4FE5-A2F0-AAFCEAEF2730}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.UserHandler", "XO.EventSpike\XO.Local.Spike.UserHandler\XO.Local.Spike.UserHandler.csproj", "{CC93A856-29AA-49DC-B66B-505BEB9B80D7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.Workflows", "XO.EventSpike\XO.Local.Spike.Workflows\XO.Local.Spike.Workflows.csproj", "{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.EventHandler", "XO.EventSpike\XO.Local.Spike.UserHandler\XO.Local.Spike.EventHandler.csproj", "{CC93A856-29AA-49DC-B66B-505BEB9B80D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.Infrastructure", "XO.EventSpike\XO.Local.Spike.Infrastructure\XO.Local.Spike.Infrastructure.csproj", "{27947362-DE46-4F37-8D79-F22A6DB2DFA5}"
 EndProject
@@ -21,14 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96828673-36C2-4256-A029-3426C21A9FFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96828673-36C2-4256-A029-3426C21A9FFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96828673-36C2-4256-A029-3426C21A9FFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96828673-36C2-4256-A029-3426C21A9FFE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,10 +27,6 @@ Global
 		{CC93A856-29AA-49DC-B66B-505BEB9B80D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC93A856-29AA-49DC-B66B-505BEB9B80D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC93A856-29AA-49DC-B66B-505BEB9B80D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{27947362-DE46-4F37-8D79-F22A6DB2DFA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{27947362-DE46-4F37-8D79-F22A6DB2DFA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27947362-DE46-4F37-8D79-F22A6DB2DFA5}.Release|Any CPU.ActiveCfg = Release|Any CPU

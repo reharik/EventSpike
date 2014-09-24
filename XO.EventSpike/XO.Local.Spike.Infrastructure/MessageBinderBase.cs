@@ -17,19 +17,19 @@ namespace XO.Local.Spike.MessageBinders
         public MessageBinderBase(IEventStoreConnection eventStoreConnection)
         {
             _eventStoreConnection = eventStoreConnection;
+            _eventStoreConnection.ConnectAsync();
         }
 
-        protected void PostEvent(IGESEvent @event, Guid commitId, Action<IDictionary<string, object>> updateHeaders)
+        protected async void PostEvent(IGESEvent @event, Guid commitId, Action<IDictionary<string, object>> updateHeaders)
         {
             var commitHeaders = new Dictionary<string, object>
                 {
                     {CommitIdHeader, commitId},
-                    {CommandClrTypeHeader, this.GetType().AssemblyQualifiedName}
                 };
             updateHeaders(commitHeaders);
             var commandToSave = new[] {ToEventData(Guid.NewGuid(), @event, commitHeaders)};
            
-            _eventStoreConnection.AppendToStreamAsync(EventStreamName, ExpectedVersion.Any, commandToSave);
+            await _eventStoreConnection.AppendToStreamAsync(EventStreamName, ExpectedVersion.Any, commandToSave);
         }
 
         private static EventData ToEventData(Guid eventId, object evnt, IDictionary<string, object> headers)

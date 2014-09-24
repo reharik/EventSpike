@@ -59,7 +59,7 @@ namespace XO.Local.Spike.Infrastructure
         public void StartDispatching()
         {
             _stopRequested = false;
-            _subscription = _gesConnection.SubscribeToAllFrom(Position.Start, false, HandleNewEvent);
+            _subscription = _gesConnection.SubscribeToAllFrom(Position.Start, false, HandleNewEvent,null,null,new UserCredentials("admin","changeit"));
         }
 
         public void StopDispatching()
@@ -71,7 +71,7 @@ namespace XO.Local.Spike.Infrastructure
 
         private void HandleNewEvent(EventStoreCatchUpSubscription subscription, ResolvedEvent @event)
         {
-            if (_eventFilter(@event)) { return; }
+            if (!_eventFilter(@event)) { return; }
             _rawEvent = @event;
             _event = ProcessRawEvent();
             if (_event == null) { return; }
@@ -80,6 +80,7 @@ namespace XO.Local.Spike.Infrastructure
 
         public void HandleEvent(string eventType)
         {
+            Console.WriteLine("Handing Event to broadcast block: {0}",_event.EventType);
             _broadcastBlock.Post(_event);
         }
 

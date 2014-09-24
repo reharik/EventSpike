@@ -73,12 +73,8 @@
       <Name>XO.Local.Spike.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\XO.Local.Spike.Messages\XO.Local.Spike.Messages.csproj">
-      <Project>{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}</Project>
+      <Project>{62c7845f-ef4d-4f0b-a6ed-4d28232ea1b2}</Project>
       <Name>XO.Local.Spike.Messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XO.Local.Spike.ReadModel\XO.Local.Spike.ReadModel.csproj">
-      <Project>{FE897AEE-44B0-4FE5-A2F0-AAFCEAEF2730}</Project>
-      <Name>XO.Local.Spike.ReadModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

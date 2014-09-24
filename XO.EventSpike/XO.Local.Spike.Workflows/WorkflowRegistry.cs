@@ -1,5 +1,7 @@
 ﻿using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
+using XO.Local.Spike.Infrastructure;
+using XO.Local.Spike.Workflows;
 
 namespace XO.Local.Domain
 {
@@ -11,8 +13,8 @@ namespace XO.Local.Domain
             {
                 x.TheCallingAssembly();
                 x.WithDefaultConventions();
+                x.AddAllTypesOf<IHandler>();
             });
-
         }
     }
 }

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.EventSpike.WorkflowConsoleApp", "XO.EventSpike\XO.EventSpike.WorkflowConsoleApp\XO.EventSpike.WorkflowConsoleApp.csproj", "{530FBECF-1EB0-4E93-9CC6-071A1884E49B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.Workflows", "XO.EventSpike\XO.Local.Spike.Workflows\XO.Local.Spike.Workflows.csproj", "{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.Domain", "XO.EventSpike\XO.Local.Spike.Domain\XO.Local.Spike.Domain.csproj", "{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.Infrastructure", "XO.EventSpike\XO.Local.Spike.Infrastructure\XO.Local.Spike.Infrastructure.csproj", "{27947362-DE46-4F37-8D79-F22A6DB2DFA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XO.Local.Spike.Messages", "XO.EventSpike\XO.Local.Spike.Messages\XO.Local.Spike.Messages.csproj", "{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{530FBECF-1EB0-4E93-9CC6-071A1884E49B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{530FBECF-1EB0-4E93-9CC6-071A1884E49B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{530FBECF-1EB0-4E93-9CC6-071A1884E49B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{530FBECF-1EB0-4E93-9CC6-071A1884E49B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27947362-DE46-4F37-8D79-F22A6DB2DFA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27947362-DE46-4F37-8D79-F22A6DB2DFA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27947362-DE46-4F37-8D79-F22A6DB2DFA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27947362-DE46-4F37-8D79-F22A6DB2DFA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

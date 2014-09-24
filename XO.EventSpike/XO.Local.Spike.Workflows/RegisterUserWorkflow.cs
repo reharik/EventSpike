@@ -18,6 +18,7 @@ namespace XO.Local.Spike.Workflows
             : base(mongoRepository)
         {
             _getEventStoreRepository = getEventStoreRepository;
+            _handlerType = "RegisterUserWorkflow";
         }
 
         public bool HandlesEvent(IGESEvent @event)

@@ -7,8 +7,8 @@
     <ProjectGuid>{CC93A856-29AA-49DC-B66B-505BEB9B80D7}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XO.Local.Spike.UserHandler</RootNamespace>
-    <AssemblyName>XO.Local.Spike.UserHandler</AssemblyName>
+    <RootNamespace>XO.Local.Spike.EventHandler</RootNamespace>
+    <AssemblyName>XO.Local.Spike.EventHandler</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -66,7 +66,6 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="ReadStoreDispatcher.cs" />
-    <Compile Include="GESEventDispatcherOrigional.cs" />
     <Compile Include="Handlers\UserHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,21 +79,13 @@
       <Project>{27947362-DE46-4F37-8D79-F22A6DB2DFA5}</Project>
       <Name>XO.Local.Spike.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XO.Local.Spike.MessageBinders\XO.Local.Spike.MessageBinders.csproj">
-      <Project>{96828673-36C2-4256-A029-3426C21A9FFE}</Project>
-      <Name>XO.Local.Spike.MessageBinders</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XO.Local.Spike.Messages\XO.Local.Spike.Messages.csproj">
-      <Project>{62C7845F-EF4D-4F0B-A6ED-4D28232EA1B2}</Project>
+      <Project>{62c7845f-ef4d-4f0b-a6ed-4d28232ea1b2}</Project>
       <Name>XO.Local.Spike.Messages</Name>
     </ProjectReference>
     <ProjectReference Include="..\XO.Local.Spike.ReadModel\XO.Local.Spike.ReadModel.csproj">
       <Project>{fe897aee-44b0-4fe5-a2f0-aafceaef2730}</Project>
       <Name>XO.Local.Spike.ReadModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XO.Local.Spike.Workflows\XO.Local.Spike.Workflows.csproj">
-      <Project>{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}</Project>
-      <Name>XO.Local.Spike.Workflows</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

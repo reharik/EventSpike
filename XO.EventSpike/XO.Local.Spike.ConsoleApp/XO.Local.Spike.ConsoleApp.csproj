@@ -68,12 +68,8 @@
       <Name>XO.Local.Spike.MessageBinders</Name>
     </ProjectReference>
     <ProjectReference Include="..\XO.Local.Spike.ReadModel\XO.Local.Spike.ReadModel.csproj">
-      <Project>{FE897AEE-44B0-4FE5-A2F0-AAFCEAEF2730}</Project>
+      <Project>{fe897aee-44b0-4fe5-a2f0-aafceaef2730}</Project>
       <Name>XO.Local.Spike.ReadModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XO.Local.Spike.Workflows\XO.Local.Spike.Workflows.csproj">
-      <Project>{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}</Project>
-      <Name>XO.Local.Spike.Workflows</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

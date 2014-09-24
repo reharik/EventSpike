@@ -1,10 +1,11 @@
 ﻿using System;
 using EventStore.ClientAPI;
+using Newtonsoft.Json;
 using XO.Local.Spike.Infrastructure.Mongo;
 using XO.Local.Spike.Messages.Command;
 using XO.Local.Spike.ReadModel.Model;
 
-namespace XO.Local.Spike.MessageBinders
+namespace XO.Local.Spike.MessageBinders.MessageBinders
 {
     public class RegisterUserMessageBinder : MessageBinderBase
     {
@@ -27,6 +28,7 @@ namespace XO.Local.Spike.MessageBinders
 
             // validate email address.
             var registerUser = new RegisterUser(userName, emailAddress, lastName, firstName, password);
+            Console.Write("Command Created: {0}", JsonConvert.SerializeObject(registerUser));
             PostEvent(registerUser, Guid.NewGuid(), a => { });
 
         }

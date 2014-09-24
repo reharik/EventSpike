@@ -41,7 +41,7 @@ namespace XO.Local.Spike.Infrastructure.Mongo
 
         public virtual T Get<T>(Expression<Func<T, bool>> filter) where T : IReadModel
         {
-            return GetAll(filter).SingleOrDefault();
+            return GetAll(filter).FirstOrDefault();
         }
 
         public virtual void Save<T>(T value) where T : IReadModel

@@ -3,7 +3,7 @@ using StructureMap.Graph;
 using XO.Local.Domain;
 using XO.Local.Spike.Infrastructure;
 
-namespace XO.Local.Spike.UserHandler
+namespace XO.Local.Spike.EventHandler
 {
     public class Bootstrapper
     {
@@ -22,10 +22,9 @@ namespace XO.Local.Spike.UserHandler
                     z.AddAllTypesOf<IHandler>();
                     z.WithDefaultConventions();
                 });
+                x.For<IDispatcher>().Use<ReadStoreDispatcher>();
                 x.AddRegistry(new InfrastructureRegistry());
-                x.AddRegistry(new MessageBinderRegistry());
                 x.AddRegistry(new ReadModelRegistry());
-                x.AddRegistry(new WorkflowRegistry());
             });
         }
     }

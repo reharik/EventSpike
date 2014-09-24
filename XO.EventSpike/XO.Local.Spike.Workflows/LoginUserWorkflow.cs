@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks.Dataflow;
+using Newtonsoft.Json;
 using XO.Local.Spike.Domain.AggregateRoots;
 using XO.Local.Spike.Infrastructure;
 using XO.Local.Spike.Infrastructure.GES.Interfaces;
@@ -33,6 +34,8 @@ namespace XO.Local.Spike.Workflows
                     User user = await _getEventStoreRepository.GetById<User>(loginUser.Id);
                     user.Handle(loginUser);
                     _getEventStoreRepository.Save(user, Guid.NewGuid(), a => { });
+                    Console.Write("ReadModel Saved: {0}", JsonConvert.SerializeObject(user));
+                   
                     SetEventAsRecorded(x);
                 });
         }

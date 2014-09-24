@@ -24,7 +24,6 @@ namespace XO.Local.Spike.ConsoleApp
                 x.AddRegistry(new InfrastructureRegistry());
                 x.AddRegistry(new MessageBinderRegistry());
                 x.AddRegistry(new ReadModelRegistry());
-                x.AddRegistry(new WorkflowRegistry());
             });
         }
     }

@@ -2,11 +2,11 @@
 using StructureMap;
 using XO.Local.Spike.Infrastructure;
 
-namespace XO.Local.Spike.EventHandler
+namespace XO.EventSpike.WorkflowConsoleApp
 {
     class Program
     {
-        private static void Main(string[] args)
+        static void Main(string[] args)
         {
             Bootstrapper.Bootstrap();
             try
@@ -20,6 +20,6 @@ namespace XO.Local.Spike.EventHandler
                 Console.WriteLine(ex.Message);
             }
             Console.Read();
-        }
+        }   
     }
-}   
+}

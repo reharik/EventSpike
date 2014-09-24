@@ -1,14 +1,14 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks.Dataflow;
-using EventStore.ClientAPI;
+using Newtonsoft.Json;
 using XO.Local.Spike.Infrastructure;
 using XO.Local.Spike.Infrastructure.Mongo;
 using XO.Local.Spike.Infrastructure.SharedModels;
 using XO.Local.Spike.Messages.Events;
-using XO.Local.Spike.ReadModel;
 using XO.Local.Spike.ReadModel.Model;
 
-namespace XO.Local.Spike.UserHandler.Handlers
+namespace XO.Local.Spike.EventHandler.Handlers
 {
     public class UserHandler : HandlerBase, IHandler
     {
@@ -31,6 +31,8 @@ namespace XO.Local.Spike.UserHandler.Handlers
         {
             return new ActionBlock<IGESEvent>(x =>
                 {
+                    Console.WriteLine("Handling User Event: {0}",x.EventType);
+
                     switch (x.EventType)
                     {
                         case "UserCreated":
@@ -52,13 +54,18 @@ namespace XO.Local.Spike.UserHandler.Handlers
         private IReadModel userLoggedIn(IGESEvent x)
         {
             var userLoggedIn = (UserLoggedIn) x;
-            return new UserLogins
+            var userLogins = new UserLogins
                 {
                     UserName = userLoggedIn.UserName,
                     Id = userLoggedIn.Id,
                     Token = userLoggedIn.Token,
                     Date = userLoggedIn.Now
                 };
+            var input = JsonConvert.SerializeObject(userLoggedIn);
+            var output = JsonConvert.SerializeObject(userLogins);
+            Console.WriteLine("input: {0}", input);
+            Console.WriteLine("output: {0}", output);
+            return userLogins;
         }
 
         private IReadModel userRegistered(IGESEvent x)
@@ -70,13 +77,22 @@ namespace XO.Local.Spike.UserHandler.Handlers
             user.FirstName = userRegistered.FirstName;
             user.LastName = userRegistered.LastName;
             user.Email = userRegistered.EmailAddress;
+            var input = JsonConvert.SerializeObject(userRegistered);
+            var output = JsonConvert.SerializeObject(user);
+            Console.WriteLine("input: {0}", input);
+            Console.WriteLine("output: {0}", output); 
             return user;
         }
 
         private IReadModel userCreated(IGESEvent x)
         {
             var userCreated = (UserCreated)x;
-            return new User {Id = userCreated.Id};
+            var user = new User {Id = userCreated.Id};
+            var input = JsonConvert.SerializeObject(userCreated);
+            var output = JsonConvert.SerializeObject(user);
+            Console.WriteLine("input: {0}", input);
+            Console.WriteLine("output: {0}", output); 
+            return user;
         }
     }
 }

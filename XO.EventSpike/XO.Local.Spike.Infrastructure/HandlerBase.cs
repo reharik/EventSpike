@@ -1,4 +1,6 @@
 ﻿using System;
+using EventStore.ClientAPI;
+using Newtonsoft.Json;
 using XO.Local.Spike.Infrastructure.Mongo;
 using XO.Local.Spike.Infrastructure.SharedModels;
 
@@ -32,7 +34,8 @@ namespace XO.Local.Spike.Infrastructure
         // this is used by dispatchers on restart
         public void GetLastPositionProcessed()
         {
-            _lastProcessedPosition = _mongoRepository.Get<LastProcessedPosition>(x => x.HandlerType == _handlerType);
+            _lastProcessedPosition = _mongoRepository.Get<LastProcessedPosition>(x => x.HandlerType == _handlerType)
+                ??new LastProcessedPosition{CommitPosition = Position.Start.CommitPosition,PreparePosition = Position.Start.PreparePosition,HandlerType = _handlerType};
         }
 
         // this is only used by readmodeleventhandler not commandmodel
@@ -41,6 +44,7 @@ namespace XO.Local.Spike.Infrastructure
             if (ExpectEventPositionIsGreaterThanLastRecorded(@event)) { return; };
             var view = handleBy(@event);
             _mongoRepository.Save(view);
+            Console.Write("ReadModel Saved: {0}", JsonConvert.SerializeObject(view));
             SetEventAsRecorded(@event);
         }
         // this is used by all handlers
