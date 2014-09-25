@@ -27,9 +27,14 @@ namespace XO.Local.Spike.MessageBinders.MessageBinders
 
             // validate email address.
             var loginUser = new LoginUser(user.Id, password, user.UserName);
-            Console.Write("Command Created: {0}", JsonConvert.SerializeObject(loginUser));
+            // noise
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("Command Created: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(JsonConvert.SerializeObject(loginUser));
+            // noise
 
-            PostEvent(loginUser,Guid.NewGuid(), a => { });
+            PostEvent(loginUser,Guid.NewGuid());
         }
     }
 }

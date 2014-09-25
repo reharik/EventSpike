@@ -25,9 +25,6 @@ namespace XO.Local.Spike.Infrastructure
         protected IEventStoreConnection _gesConnection;
         private bool _stopRequested;
         private EventStoreAllCatchUpSubscription _subscription;
-        private string _handlerType;
-        protected IGESEvent _event;
-        protected ResolvedEvent _rawEvent;
         private BroadcastBlock<IGESEvent> _broadcastBlock;
         protected string _targetClrTypeName;
         protected Func<ResolvedEvent, bool> _eventFilter;
@@ -38,20 +35,25 @@ namespace XO.Local.Spike.Infrastructure
             _gesConnection = gesConnection.BuildConnection();
             _gesConnection.ConnectAsync();
             _eventHandlers = eventHandlers;
-            _handlerType = this.GetType().Name;
+            // add all handlers to the broadcast block so they receive news of events
             RegisterHandlers();
+            // gets last event processed to avoid re processing events after a shut down.
             GetLastEventProcessedForHandlers();
         }
 
         private void GetLastEventProcessedForHandlers()
         {
+            //TODO calculate the lowest numbered LEP of all the handlers and use that for the start position 
+            // ask each registered handler to get there last processed event and hold on to it.
             var actionBlock = new ActionBlock<IHandler>(x => x.GetLastPositionProcessed(), new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 8 });
             _eventHandlers.ForEach(async x=> await actionBlock.SendAsync(x));
         }
 
         public void RegisterHandlers()
         {
+            // add all handlers to the broadcast block so they receive news of events
             _broadcastBlock = new BroadcastBlock<IGESEvent>(x => x);
+            // pass the two methods of the handler to the block, one determines if we are interested in this event, the other processes it.
             _eventHandlers.ForEach(x => _broadcastBlock.LinkTo(x.ReturnActionBlock(), x.HandlesEvent));
             _broadcastBlock.LinkTo(DataflowBlock.NullTarget<IGESEvent>());
         }
@@ -71,26 +73,33 @@ namespace XO.Local.Spike.Infrastructure
 
         private void HandleNewEvent(EventStoreCatchUpSubscription subscription, ResolvedEvent @event)
         {
+            // make sure the event fits the ones this handler cares about
             if (!_eventFilter(@event)) { return; }
-            _rawEvent = @event;
-            _event = ProcessRawEvent();
+            var _event = ProcessRawEvent(@event);
+            // filter for null event ( didn't have metadata or data )
             if (_event == null) { return; }
-            HandleEvent(_rawEvent.Event.EventType);
+            HandleEvent(_event);
         }
 
-        public void HandleEvent(string eventType)
+        public void HandleEvent(IGESEvent _event)
         {
-            Console.WriteLine("Handing Event to broadcast block: {0}",_event.EventType);
+            // noise
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Handing Event to broadcast block: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(_event.EventType);
+            Console.Write(Environment.NewLine);
+            // noise
             _broadcastBlock.Post(_event);
         }
 
-        protected IGESEvent ProcessRawEvent()
+        protected IGESEvent ProcessRawEvent(ResolvedEvent @event)
         {
-            if (_rawEvent.OriginalEvent.Metadata.Length <= 0 || _rawEvent.OriginalEvent.Data.Length <= 0)
+            if (@event.OriginalEvent.Metadata.Length <= 0 || @event.OriginalEvent.Data.Length <= 0)
             { return null; }
 
-            var gesEvent = DeserializeEvent(_rawEvent.OriginalEvent.Metadata, _rawEvent.OriginalEvent.Data);
-            gesEvent.OriginalPosition = _rawEvent.OriginalPosition;
+            var gesEvent = DeserializeEvent(@event.OriginalEvent.Metadata, @event.OriginalEvent.Data);
+            gesEvent.OriginalPosition = @event.OriginalPosition;
             return gesEvent;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using EventStore.ClientAPI;
 using Newtonsoft.Json;
@@ -20,15 +21,24 @@ namespace XO.Local.Spike.MessageBinders
             _eventStoreConnection.ConnectAsync();
         }
 
-        protected async void PostEvent(IGESEvent @event, Guid commitId, Action<IDictionary<string, object>> updateHeaders)
+        protected async void PostEvent(IGESEvent @event, Guid commitId, Dictionary<string, object> updateHeaders = null)
         {
+            // standard data for metadata portion of persisted event
             var commitHeaders = new Dictionary<string, object>
-                {
-                    {CommitIdHeader, commitId},
-                };
-            updateHeaders(commitHeaders);
+            {
+                // handy tracking id
+                {CommitIdHeader, commitId},
+                {CommandClrTypeHeader, @event.GetType().AssemblyQualifiedName}
+            };
+            // add extra data to metadata portion of presisted event
+            commitHeaders = (updateHeaders ?? new Dictionary<string, object>())
+                .Concat(commitHeaders)
+                .GroupBy(d => d.Key)
+                .ToDictionary(d => d.Key, d => d.First().Value);
+            
+            // process command so they fit the expectations of GES
             var commandToSave = new[] {ToEventData(Guid.NewGuid(), @event, commitHeaders)};
-           
+            // post to command stream
             await _eventStoreConnection.AppendToStreamAsync(EventStreamName, ExpectedVersion.Any, commandToSave);
         }
 
@@ -37,13 +47,7 @@ namespace XO.Local.Spike.MessageBinders
             var serializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.None };
             var data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(evnt, serializerSettings));
 
-            var eventHeaders = new Dictionary<string, object>(headers)
-                {
-                    {
-                        CommandClrTypeHeader, evnt.GetType().AssemblyQualifiedName
-                    }
-                };
-            var metadata = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(eventHeaders, serializerSettings));
+            var metadata = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(headers, serializerSettings));
             var typeName = evnt.GetType().Name;
 
             return new EventData(eventId, typeName, true, data, metadata);

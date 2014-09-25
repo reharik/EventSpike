@@ -31,7 +31,12 @@ namespace XO.Local.Spike.EventHandler.Handlers
         {
             return new ActionBlock<IGESEvent>(x =>
                 {
-                    Console.WriteLine("Handling User Event: {0}",x.EventType);
+                    // noise
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Handling User Event: ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(x.EventType);
+                    // noise
 
                     switch (x.EventType)
                     {
@@ -63,8 +68,16 @@ namespace XO.Local.Spike.EventHandler.Handlers
                 };
             var input = JsonConvert.SerializeObject(userLoggedIn);
             var output = JsonConvert.SerializeObject(userLogins);
-            Console.WriteLine("input: {0}", input);
-            Console.WriteLine("output: {0}", output);
+            // noise
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("input: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(input);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("output: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(output);
+            // noise
             return userLogins;
         }
 
@@ -79,8 +92,16 @@ namespace XO.Local.Spike.EventHandler.Handlers
             user.Email = userRegistered.EmailAddress;
             var input = JsonConvert.SerializeObject(userRegistered);
             var output = JsonConvert.SerializeObject(user);
-            Console.WriteLine("input: {0}", input);
-            Console.WriteLine("output: {0}", output); 
+            // noise
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("input: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(input);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("output: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(output);
+            // noise
             return user;
         }
 
@@ -90,8 +111,16 @@ namespace XO.Local.Spike.EventHandler.Handlers
             var user = new User {Id = userCreated.Id};
             var input = JsonConvert.SerializeObject(userCreated);
             var output = JsonConvert.SerializeObject(user);
-            Console.WriteLine("input: {0}", input);
-            Console.WriteLine("output: {0}", output); 
+            // noise
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("input: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(input);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("output: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(output);
+            // noise
             return user;
         }
     }

@@ -58,10 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandDispatcher.cs" />
-    <Compile Include="LoginUserWorkflow.cs" />
+    <Compile Include="Handlers\LoginUserWorkflow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkflowRegistry.cs" />
-    <Compile Include="RegisterUserWorkflow.cs" />
+    <Compile Include="Handlers\RegisterUserWorkflow.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XO.Local.Spike.Domain\XO.Local.Spike.Domain.csproj">
@@ -80,9 +80,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Handlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

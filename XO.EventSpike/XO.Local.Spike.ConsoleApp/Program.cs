@@ -24,8 +24,10 @@ namespace XO.Local.Spike.ConsoleApp
             var unpw = new Dictionary<string, string>();
             while (true)
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Enter userName to create new User");
                 Console.WriteLine("Enter 'login [userName]' to login User");
+                Console.ForegroundColor = ConsoleColor.White;
             
 
                 var input = Console.ReadLine();
@@ -37,13 +39,14 @@ namespace XO.Local.Spike.ConsoleApp
                     {
                         lu.AcceptRequest(userName, unpw[userName]);
                         Console.WriteLine(Environment.NewLine);
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine("User {0} Logged in successfully", userName);
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(Environment.NewLine);
                         Console.WriteLine(ex.Message);
-                        Console.WriteLine(Environment.NewLine);
                         Console.WriteLine("userName: {0}", userName);
                     }
                 }
@@ -55,10 +58,13 @@ namespace XO.Local.Spike.ConsoleApp
                     try
                     {
                         var userName = input.Trim();
-                        mb.AcceptRequest(userName, smr.Email, smr.LastName, smr.FirstName, smr.Password);
+                        var dob = DateTime.Now.AddYears(-(new Random().Next(0, 50)));
+                        mb.AcceptRequest(userName, smr.Email, smr.LastName, smr.FirstName, smr.Password, dob);
                         unpw.Add(userName, smr.Password);
                         Console.WriteLine(Environment.NewLine);
-                        Console.WriteLine("User {0} Created in successfully", userName);
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("User {0} Created successfully", userName);
+                        Console.ForegroundColor = ConsoleColor.White;
 
                     }
                     catch (Exception ex)

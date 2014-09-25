@@ -8,7 +8,7 @@ using XO.Local.Spike.Infrastructure.Mongo;
 using XO.Local.Spike.Infrastructure.SharedModels;
 using XO.Local.Spike.Messages.Command;
 
-namespace XO.Local.Spike.Workflows
+namespace XO.Local.Spike.Workflows.Handlers
 {
     public class LoginUserWorkflow : HandlerBase, IHandler
     {
@@ -30,12 +30,19 @@ namespace XO.Local.Spike.Workflows
         {
             return new ActionBlock<IGESEvent>(async x =>
                 {
+                    if (ExpectEventPositionIsGreaterThanLastRecorded(x)) { return; }
+
                     var loginUser = (LoginUser)x;
                     User user = await _getEventStoreRepository.GetById<User>(loginUser.Id);
                     user.Handle(loginUser);
-                    _getEventStoreRepository.Save(user, Guid.NewGuid(), a => { });
-                    Console.Write("ReadModel Saved: {0}", JsonConvert.SerializeObject(user));
-                   
+                    _getEventStoreRepository.Save(user, Guid.NewGuid());
+                    // noise
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write("Command Saved: ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write(JsonConvert.SerializeObject(user));
+                    Console.Write(Environment.NewLine);
+                    // noise
                     SetEventAsRecorded(x);
                 });
         }

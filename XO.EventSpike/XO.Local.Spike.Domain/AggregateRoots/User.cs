@@ -11,11 +11,17 @@ namespace XO.Local.Spike.Domain.AggregateRoots
         private string _password;
         private bool _loggedIn;
 
-        public User()
+        public User() :  this(false)
         {
-            Register<UserCreated>(e => Id = e.Id);
+        }
+
+        public User(bool isNew)
+        {
             Register<UserLoggedIn>(e => { });
-            RaiseEvent(new UserCreated(Guid.NewGuid()));
+            if (isNew)
+            {
+                RaiseEvent(new UserCreated(Guid.NewGuid()));
+            }
         }
 
         #region Handle
@@ -23,7 +29,7 @@ namespace XO.Local.Spike.Domain.AggregateRoots
         {
             ExpectPasswordSecure(cmd.Password);
             ExpectEmailAddressValid(cmd.EmailAddress);
-            RaiseEvent(new UserRegistered(Id, cmd.UserName,cmd.Password,cmd.FirstName,cmd.LastName,cmd.EmailAddress));
+            RaiseEvent(new UserRegistered(Id, cmd.UserName,cmd.Password,cmd.FirstName,cmd.LastName,cmd.EmailAddress, cmd.Dob));
         }
 
         public void Handle(LoginUser cmd)

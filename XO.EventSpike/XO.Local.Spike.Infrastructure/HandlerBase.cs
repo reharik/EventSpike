@@ -39,16 +39,23 @@ namespace XO.Local.Spike.Infrastructure
         }
 
         // this is only used by readmodeleventhandler not commandmodel
+        //TODO figure out how to abstract this so it can be use by both.  
+        //TODO problem is event is saved to mongo and command is saved to GES
         protected void HandleEvent(IGESEvent @event, Func<IGESEvent, IReadModel> handleBy)
         {
             if (ExpectEventPositionIsGreaterThanLastRecorded(@event)) { return; };
             var view = handleBy(@event);
             _mongoRepository.Save(view);
-            Console.Write("ReadModel Saved: {0}", JsonConvert.SerializeObject(view));
+            // noise
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("ReadModel Saved: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(JsonConvert.SerializeObject(view));
+            // noise
             SetEventAsRecorded(@event);
         }
         // this is used by all handlers
-        private bool ExpectEventPositionIsGreaterThanLastRecorded(IGESEvent x)
+        protected bool ExpectEventPositionIsGreaterThanLastRecorded(IGESEvent x)
         {
             return x.OriginalPosition == null || _lastProcessedPosition.CommitPosition >= x.OriginalPosition.Value.CommitPosition;
         }
