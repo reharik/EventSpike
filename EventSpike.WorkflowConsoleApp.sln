@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSpike.Domain", "EventSpike\EventSpike.Domain\EventSpike.Domain.csproj", "{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSpike.Infrastructure", "EventSpike\EventSpike.Infrastructure\EventSpike.Infrastructure.csproj", "{23DC4154-011C-4950-B314-813B536D8398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSpike.Messages", "EventSpike\EventSpike.Messages\EventSpike.Messages.csproj", "{989CC909-33F7-4435-94CE-F5A6C71A6A7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSpike.WorkflowConsoleApp", "EventSpike\EventSpike.WorkflowConsoleApp\EventSpike.WorkflowConsoleApp.csproj", "{530FBECF-1EB0-4E93-9CC6-071A1884E49B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSpike.Workflows", "EventSpike\EventSpike.Workflows\EventSpike.Workflows.csproj", "{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CEB9C62-0331-4D11-AD4D-89C3C71AFA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23DC4154-011C-4950-B314-813B536D8398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23DC4154-011C-4950-B314-813B536D8398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23DC4154-011C-4950-B314-813B536D8398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23DC4154-011C-4950-B314-813B536D8398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{989CC909-33F7-4435-94CE-F5A6C71A6A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{989CC909-33F7-4435-94CE-F5A6C71A6A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{989CC909-33F7-4435-94CE-F5A6C71A6A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{989CC909-33F7-4435-94CE-F5A6C71A6A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{530FBECF-1EB0-4E93-9CC6-071A1884E49B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{530FBECF-1EB0-4E93-9CC6-071A1884E49B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{530FBECF-1EB0-4E93-9CC6-071A1884E49B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{530FBECF-1EB0-4E93-9CC6-071A1884E49B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC6EBA1-7DC1-4142-AD5E-9C99CCE7C97C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
